@@ -1,6 +1,8 @@
 fun main() {
+    fun String.allDistinct() = toSet().size == length
+
     fun findUniqueMarker(str: String, n: Int) =
-        str.windowed(n).indexOfFirst { lastN -> lastN.toSet().size == n } + n
+        str.windowed(n).indexOfFirst(String::allDistinct) + n
     //  str.windowed(n).takeWhile { lastN -> lastN.toSet().size != n }.size + n
 
     fun part1(testInput: String) = findUniqueMarker(testInput, 4)
