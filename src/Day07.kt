@@ -45,12 +45,7 @@ fun main() {
     fun part2(testInput: List<String>): Long {
         initializeElfDrive(testInput)
 
-        val totalDiskSpace = 70_000_000L
-        val requiredUnused = 30_000_000L
-        val used = elfDrive.totalSize()
-
-        val unused = totalDiskSpace - used
-        val required = requiredUnused - unused
+        val required = 30_000_000L - (70_000_000L - elfDrive.totalSize())
 
         return elfDrive.walk()
             .filter(File::isDirectory)
