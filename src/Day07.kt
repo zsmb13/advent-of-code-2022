@@ -12,12 +12,11 @@ fun main() {
             when (line.first()) {
                 '$' -> {
                     val command = line.split(" ")
-                    when (command[1]) {
-                        "cd" -> file = when (val target = command[2]) {
+                    if (command[1] == "cd") {
+                        file = when (val target = command[2]) {
                             ".." -> file.parentFile
                             else -> file.resolve(target)
                         }
-                        else -> {} /* Ignore other commands */
                     }
                 }
                 else -> {
